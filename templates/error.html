@@ -1,0 +1,231 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <h1 class="error-title">
+        ERROR {{ code }}
+    </h1>
+
+    <section class="page-section">
+        <h2 class="page-section-title">
+            {{ message }}
+        </h2>
+
+        <div id="explanation">
+            <!-- Add error explanation -->
+        </div>
+
+        <div id="type-container">
+            <!-- Add additional information-->
+        </div>
+
+        <div id="cta-container">
+            <!-- Add CTA to redirect user -->
+        </div>
+    </section>
+
+    <script>
+        const type = '{{type}}'
+        const explainContainer = document.getElementById('explanation');
+        const typeContainer = document.getElementById('type-container');
+        const ctaContainer = document.getElementById('cta-container');
+        
+
+        // For COLOR NAMING errors
+        // -----------------------------------------------------------
+        if (type === 'colorName'){
+            // Create error explanation
+            const explanation = document.createElement('p');
+            explanation.className = 'page-intro';
+            explanation.innerHTML = 
+            'Looks like your color\'s name didn\'t quite follow our rules. ' + 
+            'But don\'t worry! Naming your color is still a piece of cake! ' +
+            'Check our <strong>Color Naming Guidelines</strong> to make sure ' + 
+            'your color shines bright on our list:';
+
+            // Create list
+            const nameList = document.createElement('ul');
+            nameList.className = 'error-restrict';
+            // Create list elements with name constraints
+            const item1 = document.createElement('li');
+            item1.innerHTML = '<strong class="text-stand-out">One or Two Words Only!</strong> ' +
+            'We love creativity, but let\'s keep it simple! Your color name can be just one ' +
+            'or two words max.';
+            nameList.append(item1);
+
+            const item2 = document.createElement('li');
+            item2.innerHTML = '<strong class="text-stand-out">20 Characters Tops!</strong> ' +
+            'Keep your color name under 20 characters, including spaces! Think catchy, not ' + 
+            'wordy—like.';
+            nameList.append(item2);
+
+            const item3 = document.createElement('li');
+            item3.innerHTML = '<strong class="text-stand-out">Letters Only!</strong> Sorry, ' +
+            'no numbers or symbols allowed! Your color name should be all about the letters.';
+            nameList.append(item3);
+
+            // Create redirection message
+            const redirect = document.createElement('p');
+            redirect.className = 'page-cta';
+            redirect.innerHTML = 
+            'Now that you know the rules, <a class="page-lnk" href="/addColor"><i>head back</i></a> ' + 
+            'and give your color the name it deserves!';
+
+            // Insert explanation text
+            explainContainer.append(explanation);
+            // Insert list into container
+            typeContainer.append(nameList);
+            // Insert redirection message
+            ctaContainer.append(redirect);
+        }
+
+        // Show user registration constraints
+        // -----------------------------------------------------------
+        else if (type === 'register') {
+            // Create error explanation
+            const explanation = document.createElement('p');
+            explanation.className = 'page-intro';
+            explanation.innerHTML = 
+            'Hey there! It looks like your username or password didn\'t quite ' + 
+            'fit into our rules for registration. But no worries, we\'ve got your back. ' +
+            'Here\'s how to get that username and password ready for action!';
+            // Insert error explanation
+            explainContainer.append(explanation);
+
+            //  -------------------- USERNAME --------------------
+            // Insert username sub-title
+            const userNameSubtitle = document.createElement('h4');
+            userNameSubtitle.className = 'sub-section-name';
+            userNameSubtitle.innerHTML = 'Username Guidelines';
+            typeContainer.append(userNameSubtitle);
+
+            // Insert username constrictions
+            const userNameList = document.createElement('ul');
+            userNameList.className = 'mb-6'
+            // First username constriction
+            const item1 = document.createElement('li');
+            item1.innerHTML = '<strong class="text-stand-out">Keep it short!</strong> ' +
+            'Your username should be 3 to 15 characters long.';
+            userNameList.append(item1);
+
+            // Second username constriction
+            const item2 = document.createElement('li');
+            item2.innerHTML = '<strong class="text-stand-out">Stay classy with letters!</strong> ' +
+            'Stick to letters, dots (.), and underscores (_). Numbers and other symbols are not allowed.';
+            userNameList.append(item2);
+
+            // Third username constriction
+            const item3 = document.createElement('li');
+            item3.innerHTML = '<strong class="text-stand-out">No spaces, no drama.</strong> ' +
+            'Please, don\'t add any spaces! Just smooth,uninterrupted naming.';
+            userNameList.append(item3);
+
+            // Fourth username constriction
+            const item4 = document.createElement('li');
+            item4.innerHTML = '<strong class="text-stand-out">No copycats.</strong> ' +
+            'Your username should be unique, like your favorite color. No duplicates allowed!';
+            userNameList.append(item4);
+
+            // Fifth username constriction
+            const item5 = document.createElement('li');
+            item5.innerHTML = '<strong class="text-stand-out">Avoid being too official!</strong> ' +
+            'Please steer clear of usernames like "admin" "root", or "moderator".';
+            userNameList.append(item5);
+
+            // Inser username list into container
+            typeContainer.append(userNameList);
+
+            //  -------------------- PASSWORD --------------------
+            // Insert username sub-title
+            const passwordSubtitle = document.createElement('h4');
+            passwordSubtitle.className = 'sub-section-name';
+            passwordSubtitle.innerHTML = 'Password Guidelines';
+            typeContainer.append(passwordSubtitle);
+
+            // Insert password constrictions
+            const passwordList = document.createElement('ul');
+            // First password constriction
+            const passItem1 = document.createElement('li');
+            passItem1.innerHTML = '<strong class="text-stand-out">Safety first!</strong> ' +
+            'Your password should be at least 8 characters long. Extra points if it\'s longer! ' + 
+            'But don\'t overdo it, the maximum length is 16 characters.';
+            passwordList.append(passItem1);
+
+            // First username constriction
+            const passItem2 = document.createElement('li');
+            passItem2.innerHTML = '<strong class="text-stand-out">Mix it up!</strong> ' +
+            'Add a das of uppercase, a sprinkle of lowercase, and pop of special characters ' + 
+            'like (!, @, #, $, % and &) to make it extra secure.';
+            passwordList.append(passItem2);
+
+            // Third username constriction
+            const passItem3 = document.createElement('li');
+            passItem3.innerHTML = '<strong class="text-stand-out">No obvious passwords.</strong> ' +
+            'Let\'s avoid super simple passwords like "12345" or "password". You\'re more creative ' +
+            'than that!';
+            passwordList.append(passItem3);
+
+            // Third username constriction
+            const passItem4 = document.createElement('li');
+            passItem4.innerHTML = '<strong class="text-stand-out">Avoid repetition!</strong> ' +
+            'Make sure your password doesn\'t contain your username. They\'re better off staying ' +
+            'separate!';
+            passwordList.append(passItem4);
+
+            // Insert password list into container
+            typeContainer.append(passwordList);
+
+
+            //  -------------------- CTA TEXT --------------------
+            // Create redirection message
+            const redirect = document.createElement('p');
+            redirect.className = 'page-cta mb-6';
+            redirect.innerHTML = 
+            'Now that you know the rules, <a class="page-lnk" href="/register"><i>head back</i></a> ' + 
+            'and give give it another go! Make sure your username and password follow these simple ' +
+            'rules, and you\'ll be part of our vibrant community in no time!';
+            ctaContainer.append(redirect);
+        }
+
+        // Redirect to Home page
+        // -----------------------------------------------------------
+        else if (type === 'home') {
+            // Create redirection message
+            const redirect = document.createElement('p');
+            redirect.className = 'error-redirect';
+            redirect.innerHTML = 
+            'Go back to the <a class="page-lnk" href="/"><i>main</i></a> page.';
+
+            explainContainer.append(redirect);
+        }
+
+        // Redirect to Colors page
+        // -----------------------------------------------------------
+        else if (type === 'addColor') {
+            // Create redirection message
+            const redirect = document.createElement('p');
+            redirect.className = 'error-redirect';
+            redirect.innerHTML = 
+            'Please, try to <a class="page-lnk" href="/addColor"><i>submit</i></a> ' + 
+            'your color again!';
+
+            explainContainer.append(redirect);
+        }
+
+        // Redirect to Vote page
+        // -----------------------------------------------------------
+        else if (type === 'vote') {
+            // Create redirection message
+            const redirect = document.createElement('p');
+            redirect.className = 'error-redirect';
+            redirect.innerHTML = 
+            'Please, try to <a class="page-lnk" href="/vote"><i>vote</i></a> ' + 
+            'for your color again!';
+
+            explainContainer.append(redirect);
+        }
+
+
+    </script>
+
+{% endblock %}

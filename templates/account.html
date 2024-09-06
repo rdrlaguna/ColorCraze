@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div id="account-container" class="form-container flex f-col">
+        <h1 class="access-title">Hello, {{ name }} !</h1>
+        <p>Explore and manage your account information.</p>
+
+
+        <div class="data-container">
+            <!-- Show user info -->
+            <div class="info-cont">
+                <button id="info" class="change-info-btn flex" onclick="openSection(this.id)">
+                    <p>Personal Info</p>
+                    <span id="info-sign">+</span>
+                </button>
+
+                <hr>
+
+                <div id="info-hide" class="account-fm-cntr hide">
+                    <ul class="user-info-list">
+                        <li class="flex account-info">
+                            <p class="info-type">Username:</p>
+                            <p class="info-value">{{ userInfo[0].username }}</p>
+                        </li>
+                        <li class="flex account-info">
+                            <p class="info-type">Registered:</p>
+                            <p class="info-value">{{ userInfo[0].date }}</p>
+                        </li>
+                        <li class="flex account-info">
+                            <p class="info-type">Votes Left:</p>
+                            <p class="info-value">{{ userInfo[0].votes }} votes</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- Modify Password -->
+            <div class="mod-pass">
+                <button id="pass" class="change-info-btn flex" onclick="openSection(this.id)">
+                    <p>Change your password</p>
+                    <span id="pass-sign">+</span>
+                </button>
+
+                <hr>
+
+                <!-- Change Password form -->
+                <div id="pass-hide" class="account-fm-cntr hide" >
+                    <form action="/account" method="post">
+                        <div class="flex f-col f-cntr">
+
+                            <!-- Old Password-->
+                            <input class="form-control form-inp"
+                                    type="password"
+                                    name="oldPass"
+                                    placeholder="Old Password"
+                                    autofocus
+                                    required />
+
+                            <!-- New Password-->
+                            <input class="form-control form-inp"
+                                    type="password"
+                                    name="newPass"
+                                    placeholder="New Password"
+                                    required />
+                                   
+                            <!-- Confirmation -->
+                            <input class="form-control form-inp"
+                                    type="password"
+                                    name="confirmation"
+                                    placeholder="New Password"
+                                    required />
+                        </div>
+
+                        <div class="account-btn-cntr flex f-cntr">
+                            <button class="form-btn account-btn" type="submit">Change Password</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- Modify Username -->
+            <div class="mod-name">
+                <button id="name" class="change-info-btn flex" onclick="openSection(this.id)">
+                    <p>Change your name</p>
+                    <span id="name-sign">+</span>
+                </button>
+
+                <hr>
+
+                <!-- Change username form -->
+                <div id="name-hide" class="account-fm-cntr hide">
+                    <form action="/changeName" method="post">
+                        <div class="flex f-col f-cntr">
+
+                            <!-- New Username-->
+                            <input class="form-control form-inp"
+                                    type="text"
+                                    name="newName"
+                                    placeholder="New name"
+                                    autocomplete="off"
+                                    autofocus
+                                    required />
+                        </div>
+
+                        <div class="account-btn-cntr flex f-cntr">
+                            <button class="form-btn account-btn" type="submit">Change Name</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // Open / hide document sections 
+        function openSection(id) {
+            // Find the section and the sign inside the button
+            const section = document.getElementById(id + '-hide');
+            const sign = document.getElementById(id + '-sign');
+            
+            // Iterate over the classes of the section
+            const classes = section.classList;
+            classes.forEach(function(i) {
+                if (i === 'hide') {
+                    // If section is hidden, show the section
+                    section.classList.remove('hide');
+                    section.classList.add('show');
+                    sign.innerHTML = '-';
+                } else if (i === 'show') {
+                    // If section is showed, hide the section
+                    section.classList.remove('show');
+                    section.classList.add('hide');
+                    sign.innerHTML = '+';
+                }
+            })
+        }
+
+    </script>
+
+{% endblock %}

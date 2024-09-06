@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block main %}
+       
+    <!-- Modal to show color's details-->
+    <div id="myModal" class="modal-back f-cntr">
+
+        <!-- Modal content -->
+        <div class="modal-container flex f-col f-cntr" id="modal-container">
+            <div class="close-container">
+                <span class="close" id="closeModal">&times;</span>
+            </div>
+            <div id="colorDisplay"> <!-- Display color --></div>
+            <div id="name-container"><!-- Display color Name --></div>
+            <div id="color-info" class="flex f-col">
+                <div class="color-values flex">
+                    <p>HEX: </p>
+                    <div id="hex-container" class="c-value"></div>
+                </div>
+                <div class="color-values flex" > 
+                    <p>RGB: </p>
+                    <div id="rgb-container" class="c-value"></div>
+                </div>
+                <div class="color-values flex">
+                    <p>HSL: </p>
+                    <div id="hsl-container" class="c-value"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="info-container">
+        <h1 class="page-title">Check out all our Colors</h1>
+        <p class="page-intro"> 
+            Dive into a kaleidoscope of colors! Find a hue with our personal color picker,
+            give it a name and add it to our list. For every color you add, you'll get 3 
+            votes that you can use to vote for any color of your choosing. Make your favorite 
+            colors raise to the top of the list!
+        </p>
+            
+        <br>
+
+        <section class="page-section">
+            <h3 class="page-section-title">Submit a new color</h3>
+            {% if session["user_id"] %}
+                <p> 
+                    Want to add your own splash of color to our palette? Submit your favorite 
+                    hues using the form below. Just give your color a catchy name and provide 
+                    its hexadecimal number. But pay special attention to our naming rules:
+                    Color names can have one or two words, no more. The total possible lenght of
+                    a name is 30 characters. You can only use letters to give your color a name, 
+                    numbers or signs are not allowed. Go ahead and submit your color now!
+                </p>
+                
+                <form action="/addColor" method="post" class="add-color-form flex">
+                
+                    <div class="submit-color-container flex f-col f-cntr">
+                        <h5 class="sub-section-name">Color Picker</h5>
+                        <label for="color-picker" class="flex f-col f-cntr fit-prnt"> 
+                            <input type="color" 
+                                    id="color-picker" 
+                                    value="{{color_value}}">
+                        </label>
+                    </div>
+
+                    <div class="submit-color-container flex f-col f-cntr">
+                        <h5 class="sub-section-name">Add a Color</h5>
+                        <label for="color-list-name">
+                        <input class="form-control add-color-inpt" 
+                               type="text" 
+                               name="colorName" 
+                               id="color-list-name"
+                               placeholder="Color Name"
+                               autocomplete="off" 
+                               autofocus 
+                               required />
+                        </label>
+
+                        <label for="color-list-hex">
+                        <input class="form-control add-color-inpt" 
+                               type="text"
+                               name="colorHex"
+                               id="color-list-hex"
+                               placeholder="#99ffcc"
+                               autocomplete="off" 
+                               required />
+                        </label>
+
+                        <label for="color-list-submit" class="flex f-cntr">
+                            <button class="form-btn access-btn"
+                                    id="color-list-submit"
+                                    type="submit">Add</button>
+                        </label>
+                    </div>
+                </form>
+
+            {% else %}
+            
+                <p>
+                    Sorry, you need to <a class="page-lnk" href="/login"><i>log in</i></a> to submit
+                    new colors and to vote for your favorites. If you are not registered yet, 
+                    simply click on the <a class="page-lnk" href="/register"><i>sign up</i></a></strong> 
+                    button and complete the form. It'll only take a few seconds. 
+                    <i>Join our community and share your love for colors!</i>
+                </p>
+
+            {% endif %}
+        </section>
+
+        <section class="page-section">
+            <h3 class="page-section-title">Find your dream color</h3>
+            <p>
+                Scroll through our rainbow of options and feast your eyes on 
+                an array of hues that'll make you swoon. From electric blues 
+                to fiery reds, we've got it all. Sort the list to fit your mood 
+                and click on each color to see their details. Explore all 
+                the possible colors you can imagine.
+            </p>
+
+            <!-- Allow user to sort the color list -->
+            <div id="order-container">
+                <form action="/orderColor" method="post" class="flex" id="order-form">
+                    <select name="order" class="form-select" id="order-color">
+                        <option disabled selected value=""> Sort by...</option>
+
+                        {% for  option in options %}
+                            <option value="{{ option }}">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <button id="sort-list" class="form-btn" type="submit">Sort</button>
+                </form>
+            </div>
+        
+
+            <!-- Show color list -->
+        
+            <div class="colorList-container">
+            
+                <ul class="color-list">
+                    {% for color in colors %}
+                        <li>
+                            <div class="color-container flex" id = "{{color.hex}}" onclick="passData(this.id)">
+                                <h3 class="color-name">{{ color.color_name }}</h3>
+                                <p class="color-hex">{{ color.hex }}</p>
+                                <script>
+
+                                    // Add color to element background
+                                    document.getElementById('{{color.hex}}').style.backgroundColor = '{{color.hex}}';
+                                    console.log('{{color.light}}');
+                                    // Adjust color name to color lightness
+                                    if ('{{color.light}}' <= 45) {
+
+                                        // For dark colors, add bright name color
+                                        document.getElementById('{{color.hex}}').classList.add('light-name');
+                                    } else {
+
+                                        // For light colors, add dark name color
+                                        document.getElementById('{{color.hex}}').classList.add('dark-name');
+                                    }
+
+                                </script>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div> 
+        </section> 
+    </div>
+{% endblock %}

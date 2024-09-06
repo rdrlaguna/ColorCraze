@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="form-container flex f-col">
+        <h1 class="access-title">Welcome to ColorCraze!</h1> 
+        <p class="access-intro">
+            Please enter login details below.
+        </p>
+
+        <form action="/login" method="post">
+            <div class="flex f-col f-cntr">
+                <!-- User name -->
+                <input class="form-control form-inp" 
+                       type="text" 
+                       name="name" 
+                       placeholder="Name"
+                       autocomplete="off"
+                       autofocus 
+                       required />
+
+                <!-- User Password-->
+                <input class="form-control form-inp" 
+                       type="password" 
+                       name="password" 
+                       placeholder="Password" 
+                       required />
+            </div>
+            <div class="btn-container flex f-cntr">
+                <button class="form-btn access-btn" type="submit">Log In</button>
+            </div>
+            <p id="login-cta">Don't have an account? <a href="/register">Register!</a></p>
+        </form>
+    </div>
+
+{% endblock %}

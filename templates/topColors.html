@@ -1,0 +1,87 @@
+<!-- This test to include the top color inside a slider -->
+
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <h1 class="page-title">
+        Find the last trend in colors
+    </h1>
+    <p class="page-intro">
+        Take a look at our ranking where the competition is fierce, and the excitement 
+        is off the charts! Get ready to dive into the world of top-voted hues.
+        Which colors will reign supreme? Let's find out!
+    </p>
+
+    <br>
+
+    <section class="page-section">
+        <h5 class="sub-section-name" id="top-3">
+            Explore our Top 3
+        </h5>
+
+        <!--Slide container-->
+        <div class="slide-container">
+
+            <!-- Save colors information -->
+            <script>
+                let hexList = [];
+                let nameList = [];
+                let votesList = [];
+                let lightList = [];
+            </script>
+
+            <!-- Get colors information -->
+            {% for color in topColors %}
+                <script>
+                    // Add hex and name to their lists
+                    hexList.push('{{color.hex}}');
+                    nameList.push('{{color.color_name}}');
+                    votesList.push('{{color.votes}}');
+                    lightList.push('{{color.light}}');
+                </script>
+            {% endfor %}
+            
+            <!-- Create slide to show colors -->
+            <div class="slide fit-prnt slide-fade" id="s-box">
+                <div class="slide-number" id="s-number"></div>
+                <div class="slide-votes" id="s-votes"></div>
+                <div class="slide-name" id="s-name"></div>
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev-btn" id="prev" onclick="moveSlides(this.id)">&#10094;</a>
+            <a class="next-btn" id="next" onclick="moveSlides(this.id)">&#10095;</a>
+        </div>
+
+        <br>
+
+        <div class="dots-container mb-6">
+            <!-- Dots / circles selectors-->
+            <span class="dot-select" onclick="currentSlide(0)"></span>
+            <span class="dot-select" onclick="currentSlide(1)"></span>
+            <span class="dot-select" onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <p class="mb-6">
+            Feel inspired? Go ahead and <a class="page-lnk" href="/addColor">submit</a>  
+            a new color to our list. Give your color a catchy name and watch it 
+            raise to the top!
+            By sumbitting a new color, you will receive 3 votes you
+            can cast into any color of your choosing. <a class="page-lnk" href="/vote">Vote</a> 
+            now for your favorite color and join the fierceful competition!
+        </p>
+        <p class="page-cta mb-6">
+            Pick a hue, give it a name and let's see your color claim fame!
+        </p>
+    </section>
+
+    <!-- Show top colors -->
+    <script> 
+        let slideIndex = 0;
+        showSlides(slideIndex);
+    </script>
+
+{% endblock %}

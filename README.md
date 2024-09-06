@@ -28,7 +28,7 @@ This is a Python Flask web app that allows users to submit and vote on colors, s
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/username/project-name.git
+    git clone https://github.com/rdrlaguna/ColorCraze.git
     cd project-name
     ```
 
@@ -68,6 +68,7 @@ After installing, run the web app and submit your favorite colors! Navigate to t
 
 We’d love your help in making this project better! Please feel free to contribute by:
 
+- Reporting any bugs via the [issues page](https://github.com/rdrlaguna/ColorCraze.git).
 - Creating pull requests with improvements or bug fixes.
 - Suggesting new features!
 

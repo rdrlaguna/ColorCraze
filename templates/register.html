@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="form-container flex f-col">
+        <h1 class="access-title">Register Now!</h1>
+        <p class="access-intro">
+            Enjoy all the reserved features for users.
+        </p>
+
+        <form action="/register" method="post" id="register-form">
+            <div class="flex f-col f-cntr">
+                <!-- Username -->
+                <input class="form-control form-inp"
+                       type="text" 
+                       name="name" 
+                       placeholder="Name"
+                       autocomplete="off"
+                       autofocus 
+                       required />
+
+                <!-- Password -->
+                <input class="form-control form-inp" 
+                       type="password"
+                       name="password"
+                       placeholder="Password" 
+                       required />
+
+                <!-- Password Confirmation -->
+                <input class="form-control form-inp" 
+                       type="password" 
+                       name="confirmation" 
+                       placeholder="Password" 
+                       required />
+            </div>
+            <div class="btn-container flex f-cntr">
+                <button class="form-btn access-btn" type="submit">Register</button>
+            </div>
+        </form>
+
+        <p id="login-cta">Make this colorful comunity grow!</p>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,215 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <h1 class="page-title">Share your love for colors</h1>
+
+    {% if session["user_id"] %}
+        <p class="page-intro">
+            Get ready to flex your color-curious muscles and cast 
+            your votes for the shades that make your heart skip a beat. Remember that 
+            <strong><i>votes are limited!</i></strong> If you've ran out of votes, sumbmit 
+            a new color to the list to get more votes.
+        </p>
+
+        <br>
+
+        <section class="page-section" id="vote-section">
+            <!--<h3 class="page-section-title">Vote now</h3>-->
+            
+                <form action="/vote" method="post" id="vote-form" class="fit-prnt">
+                    <div class="flex fit-prnt" id="vote-container">
+                        <div class="flex f-col f-cntr vote-input-container">
+                            <h5 class="sub-section-name">Vote Now!</h5>
+    
+                            <input class="form-control"
+                                    id="voted-color" 
+                                    name="color" 
+                                    placeholder="Color Name" 
+                                    autofocus required
+                                    autocomplete="off" />
+    
+                            <!-- Autocomplete list with colors -->
+                            <div id="autocomplete-container" style="display: none;">
+                                <ul id="color-list">
+                                    <!-- Insert color list when typing inside input-->
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        <div class="vote-btn-container">
+                            <button class="form-btn"
+                                    type="submit"
+                                    id="btn-vote">Vote</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </section>
+        
+        <p class="mb-6">
+            Found a color that speaks to your soul? Type in its name and let your 
+            voice be heard! Every vote counts, so don't hold back. Users update our 
+            palette regularly, so there's always something new to discover. 
+            Keep coming back for more colorful adventures. Don't forget to share 
+            your favorites with your friends and invite them to join the party!
+        </p>
+
+        <p class="page-cta mb-6">
+            Dive in, cast your votes, and let's paint the world together!
+        </p>
+    
+        <br>
+
+        <section class="page-section">
+            <h3 class="page-section-title"> Find some inspiration</h3>
+            <p>
+                If you haven't found that perfect color yet, take a look at the 
+                latest trends in colors and visit our <a class="page-lnk" href="/top">Top</a> 
+                section, where you can find the most rated colors among users. 
+                You can also check our <a class="page-lnk" href="/addColor">color list</a>! 
+                Navigate our vibrant collection of hues and find for your favorites.
+            </p>
+            <p>
+                
+            </p>
+
+        </section>
+
+        <!-- Insert random color in the inspiration display -->
+        <script>
+            // Create lists to save color info
+            let inspColorList = [];
+            let inspNameList = [];
+        </script>
+        
+        <div class="inspiration" id="insp-container">
+            <!-- Display color hex as background -->
+        </div>
+        <div class="insp-name" id="insp-name">
+            <!-- Display color name -->
+        </div>
+
+        <!-- Iterate over each color -->
+        {% for color in colors %}
+            <script>
+                // Save color's hex and name
+                inspColorList.push('{{color.hex}}');
+                inspNameList.push('{{color.color_name}}');
+            </script>
+        {% endfor %}
+
+        <script>
+            // Select html tags to display color
+            const inspContainer = document.getElementById('insp-container');
+            const inspName = document.getElementById('insp-name');
+            const totalColors = inspColorList.length - 1;
+            let randNum;
+
+            // Wait until DOM is loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                // Add random color
+                changeColor();
+
+                // Change color every 3 seconds
+                setInterval(function() {
+                    changeColor();
+                }, 3000)
+                
+            })
+
+            // Change color inside inspiration display
+            function changeColor(){
+                // Get random number
+                randNum =  Math.floor(Math.random() * totalColors);
+
+                // Add random color info to html
+                inspContainer.style.backgroundColor = inspColorList[randNum];
+                inspName.innerHTML = inspNameList[randNum];
+            }
+
+        </script>
+
+        <script>
+            // Autocomplete search when voting for a color
+            const input = document.getElementById('voted-color');
+            const colorList = document.getElementById('color-list');
+            const listContainer = document.getElementById('autocomplete-container');
+
+            input.addEventListener('input', async function() {
+                let response = await fetch('/search?q=' + input.value);
+                let colors = await response.json();
+                let html = '';
+
+                // Remove elements in list before inserting new elements
+                colorList.replaceChildren();
+
+                // Hide list if value is empty
+                if (input.value === '') {
+                    listContainer.style.display = 'none';
+                }
+
+                // Insert element in list
+                for (let i in colors) {
+                    // Get color's name and hex
+                    const name = colors[i]["color_name"];
+                    const hex = colors[i]["hex"];
+
+                    // Create an <li> tag for the color
+                    const color = document.createElement('li');
+                    color.className = 'flex';
+                    // Create tags for color's name and color
+                    const colorName = document.createElement('p');
+                    colorName.className = 'vote-color-name';
+                    const colorDisplay = document.createElement('div');
+                    colorDisplay.className = 'vote-color-display';
+
+                    // Insert color name and color hex
+                    colorName.innerHTML = name;
+                    colorDisplay.style.background = hex;
+                    color.append(colorName);
+                    color.append(colorDisplay);
+
+                    // Insert onclick function
+                    color.onclick = function() {
+                        input.value = name;
+                        colorList.replaceChildren();
+                    }
+
+                    // Insert option in list
+                    colorList.append(color);
+
+                    // Show list
+                    listContainer.style.display = 'block';
+
+                }
+            })
+
+            // Delete contents of list when clicking outside list
+            window.addEventListener('click', function() {
+                colorList.replaceChildren();
+                listContainer.style.display = 'none';
+            })
+        </script>
+
+    {% else %}
+
+        <p class="mb-6">
+            Sorry, you need to <a class="page-lnk" href="/login"><i>log in</i></a> to submit
+            new colors and vote for your favorites. If you are not registered yet,
+            simply click on the <a class="page-lnk" href="/register"><i>sign up</i></a></strong> 
+            button and complete the form. It'll only take a few seconds. 
+            <i>Join our community and share your love for colors!</i> 
+        </p>
+
+        <br>
+
+        <p class="page-cta">
+            Feeling colorful? Submit your shade and make it shine!
+        </p>
+
+    {% endif %}
+    
+
+
+{% endblock %}

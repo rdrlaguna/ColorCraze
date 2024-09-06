@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- Page title -->
+    <h1 class="page-title">Welcome to ColorCraze!</h1>
+    <p class="page-intro">
+        Here, colors are more than just shades; they're an expression of 
+        your personality, a statement, a vibe! This is where you can share 
+        your favorite colors, vote for the ones that brighten your day, 
+        and see what the world&#x2019s most popular hues are right now. Ready 
+        to dive into the spectrum? <a class="page-lnk" href="/addColor">Let's go!</a>
+    </p>
+
+    <br>
+
+    <!-- First Section -->
+    <section class="page-section">
+        <h2 class="page-section-title">
+            How It Works
+        </h2>
+        <p>
+            <strong class="text-stand-out">Vote for Your Favorites:</strong> Explore our dazzling array of colors. 
+            We have everything from deep sea blues to flaming reds. Click on the colors 
+            that catch your eye, to discover more information about them. Yo can vote for
+            your preferred colors on our <a class="page-lnk" href="/vote"><i>Vote</i></a> section.
+            Go ahead, give those pastel pinks some love, or maybe it's the neon 
+            greens that steal your heart. Vote for as many as you like, and 
+            remember, there are no wrong choices! 
+        </p>
+        <p>
+            <strong class="text-stand-out">Discover the Top Colors:</strong> After you've voted, head over to our 
+            <a class="page-lnk" href="/top"><i>Top</i></a> page to see which colors are trending.
+            Find out if your favorites made it to the top 10, or if they're still climbing the ranks. 
+            It's a color countdown you won't want to miss!
+        </p>
+        <p>
+            <strong class="text-stand-out">Share the Love:</strong> If you find a color that makes you swoon, share it with your 
+            friends! Use our social media buttons to post about it on Instagram, Twitter, or Facebook. 
+            Let's get everyone in on the fun!
+        </p>
+        <p>
+            <strong class="text-stand-out">Contribute to the Community:</strong> Got a favorite color that's not on the list? 
+            No problem! 
+            
+            <!-- Show register link if user not signed up-->
+            {% if session["user_id"] %}
+                <a class="page-lnk" href="/addColor"><i>Add</i></a> it to our palette by filling a
+                simple form. You can add as many colors as you want.
+            {% else %}
+                <a class="page-lnk" href="/register"><i>Register</i></a> to add it to our palette. 
+                It'll only take a few seconds and you can share as many colors as you want.
+            {% endif %}
+
+            The more colors, the merrier!
+        </p>
+
+    </section>
+
+    <!-- Second Section -->
+    <section class="page-section">
+        <h3 class="page-section-title">Tips for the Ultimate Color Experience</h3>
+        <ul class="tip-list">
+            <li>
+                <strong><i>Try Different Moods: </i></strong>Feeling chill? Check out the cooler shades. Need a pick-me-up? 
+                The bright colors are where it's at! Use the filters to find colors that match your mood.
+            </li>   
+            <li>
+                <strong><i>Follow the Trends: </i></strong>Keep an eye on our "Top Colors" page to stay ahead of the color game. 
+                You never know what will be the next big hit!
+            </li>   
+            <li>
+                <strong><i>Have Fun!: </i></strong>This is all about exploring, voting, and having a good time. So grab a friend, 
+                start voting, and let's see which colors come out on top!
+            </li>
+        </ul>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-container">
+        <p class="page-cta">So, what are you waiting for? Get in there, start voting, and let's make the world a little more colorful! </p>
+    </div>
+
+
+{% endblock %}

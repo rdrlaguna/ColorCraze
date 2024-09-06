@@ -1,0 +1,62 @@
+# Python specific files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.env
+*.venv
+instance/
+.wsgi
+
+# Flask specific files
+flask_session/
+instance/
+instance/*
+!instance/config.py # If you want to track your config file (without sensitive data)
+*.db
+*.sqlite3
+*.log
+
+# Environment variables and Python virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env
+
+# Package managers (pip)
+*.egg
+*.egg-info/
+dist/
+build/
+
+# IDE specific files (optional)
+.vscode/
+.idea/
+*.swp
+*.sublime-project
+*.sublime-workspace
+*.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Dependency directories
+__pycache__/
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Pytest files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Celery and Redis files (if used)
+celerybeat-schedule
+*.pid
+*.sock
+
+# Docker specific files
+docker-compose.override.yml
