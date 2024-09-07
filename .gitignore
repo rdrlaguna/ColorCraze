@@ -13,7 +13,6 @@ flask_session/
 instance/
 instance/*
 !instance/config.py # If you want to track your config file (without sensitive data)
-*.db
 *.sqlite3
 *.log
 
