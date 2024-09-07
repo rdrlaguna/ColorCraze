@@ -578,7 +578,7 @@ footer a:hover {
 
 /* .......... Social .......... */
 .footer-social {
-    width: 15%;
+    width: fit-content;
     gap: 0.5rem;
 }
 .footer-social a {
@@ -1016,8 +1016,8 @@ footer a:hover {
 
 /* --------------------  M E D I A    Q U E R I E S ---------------- */
 
-/* ::::::::::::::: MAX 1400 ::::::::::::: */
-@media (max-width: 1500px) {
+/* ::::::::::::::: LARGE DESKTOPS AND SCREENS ::::::::::::::: */
+@media only screen and (max-width: 1500px) {
     body {
         grid-template-columns: 20% 80%;
     }
@@ -1040,9 +1040,9 @@ footer a:hover {
 
 }
 
-
-/* ::::::::::::::: MAX 1200 ::::::::::::: */
-@media (max-width: 1200px) {
+/* ::::::::::::::: LARGE DESKTOPS AND SCREENS ::::::::::::::: */
+/* ::::::::::::::: REGULAR DESKTOPS AND SCREENS ::::::::::::: */
+@media only screen and (max-width: 1200px) {
     body {
         grid-template-columns: 23% 77%;
     }
@@ -1066,9 +1066,8 @@ footer a:hover {
     }
 }
 
-
-/* ::::::::::::::: MAX 950 ::::::::::::: */
-@media (max-width: 950px) {
+/* ::::::::::::::: TABLETS (Landscape mode) ::::::::::::::::: */
+@media only screen and (max-width: 992px) {
 
     /* ----- FLEX CLASSES ----- */
     body,
@@ -1165,5 +1164,202 @@ footer a:hover {
    /* .......... Footer .......... */
     footer {
         height: 15vh;
-    } 
+    }
+}
+
+
+/* ::::::::::::::: SMALL TABLETS :::::::::::::::::::::::::::: */
+@media only screen and (max-width:768px) {
+
+    /* .......... Header .......... */
+    .nav-user-link {
+        font-size: 1.8rem;
+        gap:0.75rem;
+    }
+
+    /* .......... Main ............ */
+    /* --- Color Modal --- */
+    .modal-container {
+        width: 60%;
+    }
+}
+
+
+
+
+/* ::::::::::::::: LARGE MOBILE DEVICES ::::::::::::::::::::: */
+@media only screen and (max-width: 576px) {
+    * {
+        border: 1px solid red;
+    }
+    /* .......... Header .......... */
+    .nav-page-link {
+        padding-left:0;
+        padding-right: 0;
+        font-size: 1.8rem;
+    }
+    .nav-user-link {
+        font-size: 1.6rem;
+        gap: 0.5rem;
+    }
+    #nav-user-list > li {
+        padding-left: 0.5rem;
+    }
+
+    /* .......... Main ............ */
+    #color-picker {
+        width: 80%;
+    }
+    .add-color-inpt
+    {
+        width: 100% !important;
+    }
+    #color-list-submit {
+        width: 60%;
+    }
+    .color-name {
+        font-size: 2rem;
+    }
+    .color-hex {
+        font-size: 1.3rem;
+    }
+
+    /* --- Color Modal --- */
+    .modal-container {
+        width: 80%;
+    }
+
+    /* --- VOTE PAGE --- */
+    #vote-container {
+        gap: 1rem;
+    }
+
+    /* .......... Footer .......... */
+    footer {
+        height: auto;
+        padding: 2rem 0 1.5rem 0;
+        flex-direction: column;
+        align-items: center;
+        flex-flow: column-reverse;
+
+        gap: 2rem;
+    }
+
+    .footer-policy,
+    .footer-social,
+    .footer-contact 
+    {
+        width: 50%;
+    }
+
+    .footer-policy  li {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+/* ::::::::::::::: REGULAR MOBILE DEVICES ::::::::::::::::::: */
+@media only screen and (max-width:480PX) {
+    body {
+        font-size: 14px !important;
+    }
+    /* .......... Header .......... */
+    header, .nav-link-list {
+        height: 10vh;
+    }
+    .flashes {
+        margin-top: 10vh;
+    }
+    .nav-page-link {
+        padding-top: calc((10vh - 1.2rem) / 2);
+        font-size: 1.2rem;
+        
+    }
+    .nav-user-link {
+        font-size: 1.15rem;
+        justify-content: center;
+    }
+    #nav-user-list > li {
+        padding-left: 0;
+    }
+
+    /* .......... Main ............ */
+    .page-intro {
+        font-size: 1.5rem;
+    }
+
+    .submit-color-container {
+        padding: 1rem;
+    }
+    .submit-color-container h5 {
+        font-size: 1.5rem;
+    }
+    /* --- Color Modal --- */
+    #color-info {
+        width: 80%;
+    }
+
+    /* VOTE PAGE */
+    #voted-color {
+        width: 22rem;
+    }
+    #btn-vote {
+        width: 8rem;
+    }
+
+
+
+    
+}
+
+
+/* ::::::::::::::: SMALL MOBILE DEVICES ::::::::::::::::::::: */
+@media only screen and (max-width: 370PX) {
+
+
+    /* .......... Header .......... */
+    .nav-link-list {
+        width:78%;
+    }
+    .nav-page-link {
+        padding-top: calc((10vh - 1rem) / 2);
+        font-size: 1rem;
+    }
+    .nav-user-link {
+        font-size: 0.9rem;
+        gap: 0.3rem;
+        
+    }
+    #nav-user-list {
+        width: 22%;
+    }
+
+    /* .......... Main ............ */
+    .submit-color-container {
+        padding: 0.5rem;
+    }
+    .submit-color-container h5 {
+        font-size: 1.2rem;
+    }
+    #color-list-submit {
+        width: 80%;
+    }
+    .color-name {
+        font-size: 1.8rem;
+    }
+    .color-hex {
+        font-size: 1rem;
+    }
+
+    /* --- Color Modal --- */
+    .color-values {
+        font-size: 1.2rem;
+    }
+
+    #voted-color {
+        width: 18rem;
+    }
+
+
 }
