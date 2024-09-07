@@ -41,7 +41,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /*border: 1px solid red;*/
 }
 
 /* Override bootcamp settings */
@@ -1159,6 +1158,8 @@ footer a:hover {
     }
     .modal-container {
         width: 50%;
+        height: auto;
+        padding: 30px 20px 30px 20px;
     }
     
    /* .......... Footer .......... */
@@ -1178,20 +1179,30 @@ footer a:hover {
     }
 
     /* .......... Main ............ */
+    /* Page classes */
+    .page-title {
+        font-size: 3.5rem;
+    }
+    .page-intro {
+        font-size: 1.8rem;
+    }
+
     /* --- Color Modal --- */
     .modal-container {
         width: 60%;
+    }
+
+    /* --- Account / login */
+    #account-container {
+        width: 80%;
     }
 }
 
 
 
-
 /* ::::::::::::::: LARGE MOBILE DEVICES ::::::::::::::::::::: */
-@media only screen and (max-width: 576px) {
-    * {
-        border: 1px solid red;
-    }
+@media only screen and (max-width: 580px) {
+
     /* .......... Header .......... */
     .nav-page-link {
         padding-left:0;
@@ -1207,6 +1218,21 @@ footer a:hover {
     }
 
     /* .......... Main ............ */
+    /* Page classes */
+    .page-title {
+        font-size: 3rem;
+    }
+    .page-section-title {
+        font-size: 2.5rem;
+    }
+    .text-stand-out {
+        font-size: 1.5rem;
+    }
+    .page-cta {
+        font-size: 1.8rem;
+    }
+
+    /* -------------- */
     #color-picker {
         width: 80%;
     }
@@ -1232,6 +1258,12 @@ footer a:hover {
     /* --- VOTE PAGE --- */
     #vote-container {
         gap: 1rem;
+    }
+
+    /* --- Account / login */
+    .form-container {
+        width: 80%;
+        height: 35vh;
     }
 
     /* .......... Footer .......... */
@@ -1308,6 +1340,15 @@ footer a:hover {
         width: 8rem;
     }
 
+    /* --- Account / login */
+
+    .form-inp {
+        width: 80% !important;
+    }
+    .access-btn {
+        width: 50%;
+    }
+
 
 
     
@@ -1361,5 +1402,9 @@ footer a:hover {
         width: 18rem;
     }
 
+    /* --- Account / login */
+    .access-title {
+        font-size: 3rem;
+    }
 
 }
