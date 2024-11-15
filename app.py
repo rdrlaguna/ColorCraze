@@ -199,7 +199,7 @@ def register():
         
         # Confirm registration
         flash("You are now registered. Please, log in!")
-        return redirect("/")
+        return redirect("/login")
     
     # User reached route via GET (clicking a link or via redirect)
     else:
@@ -216,30 +216,33 @@ def login():
     # User reached route via POST
     if request.method == "POST":
 
+        username = request.form.get("name").lower()
+        password = request.form.get("password")
+
         # Check if username was submitted
-        if not request.form.get("name"):
+        if not username:
             return showError("Provide a valid username", 400)
         # Check if password was submitted
-        elif not request.form.get("password"):
+        elif not password:
             return showError("Please enter a password", 400)
         
         # Query the database for the username information
         userInfo = db.execute(
-            "SELECT * FROM users WHERE username = ?", request.form.get("name")
+            "SELECT * FROM users WHERE username = ?", username
         )
 
         # Ensure the username exists 
         if len(userInfo) != 1:
             return showError("Invalid user name", 400)
         # Check if it's a valid password
-        elif not check_password_hash(userInfo[0]["hash"], request.form.get("password")):
+        elif not check_password_hash(userInfo[0]["hash"], password):
             return showError("Invalid password", 400)
 
         # Remember which user has logged in
         session["user_id"] = userInfo[0]["id"]
 
         # Redirect user to home page
-        return redirect("/")
+        return redirect("/addColor")
     
     # User reached route via GET
     else: 
@@ -358,6 +361,15 @@ def addColor():
         if not validateHex(colorHex):
             return showError("Please enter a valid hexadecimal number.", "addColor", 400)
         
+        tempHex = ""
+        # Capitalize hex letters before storing
+        for letter in colorHex:
+            if letter.isalpha():
+                tempHex += letter.upper()
+            else:
+                tempHex += letter
+
+        colorHex = tempHex
 
         # Validate name constrains
         # colorName.count(" ") > 1 or
