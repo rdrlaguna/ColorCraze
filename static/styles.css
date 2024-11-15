@@ -922,75 +922,6 @@ footer a:hover {
 }
 
 
-/* --------------------  V O T E    T A G S ------------------------ */
-#voted-color {
-    width: 30rem;
-}
-#vote-container {
-    align-items: start;
-    justify-content: center;
-    gap: 2rem;
-}
-#vote-section {
-    height: 13vh;
-    margin-bottom: 3rem;
-}
-.vote-input-container,
-.vote-btn-container {
-    align-self: flex-end;
-    translate: 0 -3rem;
-}
-
-/* .......... Color List ...... */
-/* Autocomplete */
-#autocomplete-container {
-    position: relative;
-    border: none;
-}
-#btn-vote {
-    width: 10rem;
-}
-#color-list {
-    position: absolute;
-    width: 30rem;
-    top: 0;
-    right: 25;
-
-    z-index: 2;
-    padding-bottom: 1rem;
-
-    box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.3);
-    background-color: var(--footer-background);
-}
-#color-list > li {
-    padding: 10px;
-}
-#color-list > li:hover {
-    background-color: var(--voted-color);
-}
-.vote-color-display {
-    width: 4rem;
-    height: 2rem;
-}
-
-/* .......... Inspiration ..... */
-.inspiration {
-    height: 20vh;
-    /* Fallback color */
-    background-color: var(--footer-background);
-}
-.insp-name {
-    translate: 0 -3.5rem;
-    margin: 0 auto 10rem auto;
-    min-height: 3rem;
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing: 0.4rem;
-    font-size: 2rem;
-    color: white;
-}
-
-
 /* --------------------  E R R O R    T A G S ---------------------- */
 .error-title {
     font-size: 8rem;
@@ -1007,7 +938,3 @@ footer a:hover {
 .error-redirect {
     margin-top: 6rem;
 }
-
-
-/* ***************************************************************** */
-/* ***************************************************************** */
