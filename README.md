@@ -65,15 +65,24 @@ The repository is organized as follows.
 
 ``` bash
 ColorCraze/
-├── LICENSE          # License file at the root level
-├── README.md        # Repository description
-├── static/            # First creative coding project
-│   ├── index.html   # Main HTML file
+├── static/          
 │   ├── script.js    # JavaScript code for the animation
-│   ├── styles.css   # Optional styling (if needed)
-│   └── assets/      # Folder for images and resources
-├── templates/            # First creative coding project
-└── other-projects/  # Placeholder for future projects
+│   └── styles.css   # Optional styling (if needed)
+├── templates/        
+│   ├── account.html  
+│   ├── colorList.html   
+│   ├── error.html   
+│   ├── index.html   
+│   ├── layout.html   
+│   ├── login.html   
+│   ├── register.html   
+│   ├── topColors.html     
+│   └── vote.html      
+├── app.py         
+├── colors.db           
+├── helpers.py            
+├── README.md           # Repository description
+└── requirements.txt
 ```
 
 The project is structured into various files and folders, each with specific functionality that contributes to the overall application. Below is a breakdown of the files:
