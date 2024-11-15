@@ -1,30 +1,38 @@
 # ColorCraze
 Web app to list and vote for all your favorite colors.
 
+#### Visit the web:  <https://rodrigolaguna.pythonanywhere.com/>
+
 ## Description
 
-A short description of what your project does, why it’s important, and any key features. For example:
+Welcome to **ColorCraze**, an interactive web application that allows users to explore, submit, and vote on a variety of custom colors. The app serves as a vibrant community for color enthusiasts to submit unique color hues, give them creative names, and cast votes to create a dynamic ranking of the most popular colors. Whether you're a designer looking for inspiration or just a lover of color, ColorCraze offers an engaging and playful way to interact with the world of color.
 
-This is a Python Flask web app that allows users to submit and vote on colors, showcasing the most popular user-submitted colors. It’s a fun and interactive way for users to engage with color theory while practicing web development.
+This project was developed as the final assignment for **cs50x: Introduction to Computer Science**. The primary goal of the project was to demonstrate the acquired knowledge of modern web technologies like **Python**, **Flask**, **HTML**, **CSS**, **JavaScript**, and **SQL**. The application features *user authentication*, *submission validation*, *dynamic ranking*, and *error handling*, making it a comprehensive project that showcases full-stack development skills.
 
 ## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
 - [Features](#features)
 - [Contributing](#contributing)
 - [Tests](#tests)
 - [License](#license)
 - [Authors and Acknowledgments](#authors-and-acknowledgments)
 
-## Installation
+---
 
-### Prerequisites
+## Getting Started
 
-- Python 3.8+
-- Flask
-- SQLite (optional, or replace with your preferred DBMS)
+To try out this project, follow these steps:
 
-### Installation Steps
+### 1. Prerequisites
+
+Ensure you have a basic setup with the following:
+- **A code editor** like [Visual Studio Code](https://code.visualstudio.com/) or Sublime Text.
+- **Python 3.8+**
+- **Flask**
+- **SQLite** (optional, or replace with your preferred DBMS)
+
+### 2. Installation Steps
 
 1. Clone the repository:
     ```bash
@@ -50,7 +58,27 @@ This is a Python Flask web app that allows users to submit and vote on colors, s
 
 5. Access the web app at `http://127.0.0.1:5000/`.
 
-## Usage
+
+## Project Structure
+
+The repository is organized as follows, allowing for easy addition of future projects.
+
+``` bash
+ColorCraze/
+├── LICENSE          # License file at the root level
+├── README.md        # Repository description
+├── static/            # First creative coding project
+│   ├── index.html   # Main HTML file
+│   ├── script.js    # JavaScript code for the animation
+│   ├── styles.css   # Optional styling (if needed)
+│   └── assets/      # Folder for images and resources
+├── templates/            # First creative coding project
+└── other-projects/  # Placeholder for future projects
+
+
+```
+
+## 3. Usage
 
 After installing, run the web app and submit your favorite colors! Navigate to the homepage and click the "Submit a Color" button to get started.
 
