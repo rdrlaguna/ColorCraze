@@ -12,7 +12,7 @@ This project was developed as the final assignment for **cs50x: Introduction to 
 ## Table of Contents
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
-- [Usage](#usage)
+- [Usage and Features](#usage-and-features)
 - [Design Decisions](#design-decisions)
 - [Future Improvements](#future-improvements)
 - [Contributing](#contributing)
@@ -42,7 +42,9 @@ Ensure you have a basic setup with the following:
 2. Create and activate a virtual environment:
     ```bash
     python3 -m venv env
-    source env/bin/activate  # On Windows use `env\Scripts\activate`
+    source env/bin/activate 
+
+    # On Windows use `env\Scripts\activate`
     ```
 
 3. Install dependencies:
@@ -65,8 +67,8 @@ The repository is organized as follows.
 ``` bash
 ColorCraze/
 ├── static/          
-│   ├── script.js    # JavaScript code for the animation
-│   └── styles.css   # Optional styling (if needed)
+│   ├── script.js
+│   └── styles.css 
 ├── templates/        
 │   ├── account.html  
 │   ├── colorList.html   
@@ -80,7 +82,7 @@ ColorCraze/
 ├── app.py         
 ├── colors.db           
 ├── helpers.py            
-├── README.md           # Repository description
+├── README.md
 └── requirements.txt
 ```
 ---
@@ -126,13 +128,19 @@ Contains all HTML templates used by Flask to render different pages. Here's an o
 This SQLite database file stores all the data related to users, colors, and votes. It is dynamically updated as users interact with the application (e.g., submitting colors, voting).
 
 
-## Usage
+## Usage and Features
 
 After installing, run the web app and submit your favorite colors! Navigate to the homepage and click the "Submit a Color" button to get started.
 
 - **Register:** Register and Log in to be able to use all the user reserved features.
 - **Submit a Color:** Fill out the form with your color's name and hex code.
 - **Vote for Colors:** View and vote for other submitted colors on the ranking page.
+
+### Features
+
+- User submission of color names and hex codes.
+- Color ranking system based on user votes.
+- Interactive and responsive design for great user experience on all devices.
 
 ### Design Decisions
 
@@ -194,13 +202,6 @@ While **ColorCraze** offers a solid foundation for users to submit, vote, and ex
 #### 4. **Improved Color Name Validation**
 
 - **Name Suggestions:** If a user submits a color name that already exists, suggest alternative names based on the hue or related colors.
-
-
-## Features
-
-- User submission of color names and hex codes.
-- Color ranking system based on user votes.
-- Interactive and responsive design for great user experience on all devices.
 
 ## Contributing
 
