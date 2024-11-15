@@ -1,0 +1,395 @@
+
+/* --------------------  M E D I A    Q U E R I E S ---------------- */
+
+/* ::::::::::::::: LARGE DESKTOPS AND SCREENS ::::::::::::::: */
+@media only screen and (max-width: 1500px) {
+    body {
+        grid-template-columns: 20% 80%;
+    }
+
+    nav {
+        width: 20%;
+    }
+
+    .nav-social i {
+        font-size: 1.8em;
+    }
+
+    /* ----- Color Modal ----- */
+    .modal-back {
+        width: 80%;
+    }
+    .modal-container {
+        width: 45%;
+    }
+
+}
+
+/* ::::::::::::::: LARGE DESKTOPS AND SCREENS ::::::::::::::: */
+/* ::::::::::::::: REGULAR DESKTOPS AND SCREENS ::::::::::::: */
+@media only screen and (max-width: 1200px) {
+    body {
+        grid-template-columns: 23% 77%;
+    }
+    nav {
+        width: 23%;
+    }
+    #nav-title-link {
+        font-size: 3.2rem;
+    }
+    .main-frame{
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    /* ----- Color Modal ----- */
+    .modal-back {
+        width: 77%;
+    }
+    .modal-container {
+        width: 60%;
+    }
+}
+
+/* ::::::::::::::: TABLETS (Landscape mode) ::::::::::::::::: */
+@media only screen and (max-width: 992px) {
+
+    /* ----- FLEX CLASSES ----- */
+    body,
+    header,
+    nav
+    {
+        display: flex !important;
+    }
+
+    header,
+    nav {
+        width: 100%;
+    }
+
+    /* .......... General ......... */
+    body {
+        flex-direction: column;
+        position: relative;
+    }
+    
+    #nav-title-container,
+    .nav-social,
+    nav > hr
+    {
+        display: none;
+    }
+
+    nav,
+    #nav-user-list  {
+        position: unset;
+    }
+
+    /* .......... Header .......... */
+    header,
+    .nav-link-list
+     {
+        height: 12vh;
+    }
+
+    header {
+        position: fixed;
+        z-index: 1;
+    }
+
+    nav {
+        height: inherit;
+    }
+
+    /* Nav-links */
+    .nav-link-list {
+        width: 80%;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+    }
+    .nav-link-list > li {
+        width: calc(100% / 4);
+    }
+    .nav-page-link {
+        text-align: center;
+        padding-top: calc((12vh - 1.8rem) / 2);
+    }
+    #nav-user-list {
+        width: calc(100% / 5);
+        margin: 0;
+    }
+    #nav-user-list > li {
+        width: 100%;
+        padding-left: 1rem;
+    }
+
+
+    /* .......... Main ............ */
+    main
+    {
+        min-height: 100vh;
+    }
+    .flashes {
+        margin-top: 12vh;
+    }
+    .main-frame{
+        min-height: 82vh;
+        width: 90%;
+    }
+
+    /* --- Color Modal --- */
+    .modal-back {
+        width: 100%;
+    }
+    .modal-container {
+        width: 50%;
+        height: auto;
+        padding: 30px 20px 30px 20px;
+    }
+    
+   /* .......... Footer .......... */
+    footer {
+        height: 15vh;
+    }
+}
+
+
+/* ::::::::::::::: SMALL TABLETS :::::::::::::::::::::::::::: */
+@media only screen and (max-width:768px) {
+
+    /* .......... Header .......... */
+    .nav-user-link {
+        font-size: 1.8rem;
+        gap:0.75rem;
+    }
+
+    /* .......... Main ............ */
+    /* Page classes */
+    .page-title {
+        font-size: 3.5rem;
+    }
+    .page-intro {
+        font-size: 1.8rem;
+    }
+
+    /* --- Color Modal --- */
+    .modal-container {
+        width: 60%;
+    }
+
+    /* --- Account / login */
+    #account-container {
+        width: 80%;
+    }
+}
+
+
+
+/* ::::::::::::::: LARGE MOBILE DEVICES ::::::::::::::::::::: */
+@media only screen and (max-width: 580px) {
+
+    /* .......... Header .......... */
+    .nav-page-link {
+        padding-left:0;
+        padding-right: 0;
+        font-size: 1.8rem;
+    }
+    .nav-user-link {
+        font-size: 1.6rem;
+        gap: 0.5rem;
+    }
+    #nav-user-list > li {
+        padding-left: 0.5rem;
+    }
+
+    /* .......... Main ............ */
+    /* Page classes */
+    .page-title {
+        font-size: 3rem;
+    }
+    .page-section-title {
+        font-size: 2.5rem;
+    }
+    .text-stand-out {
+        font-size: 1.5rem;
+    }
+    .page-cta {
+        font-size: 1.8rem;
+    }
+
+    /* -------------- */
+    #color-picker {
+        width: 80%;
+    }
+    .add-color-inpt
+    {
+        width: 100% !important;
+    }
+    #color-list-submit {
+        width: 60%;
+    }
+    .color-name {
+        font-size: 2rem;
+    }
+    .color-hex {
+        font-size: 1.3rem;
+    }
+
+    /* --- Color Modal --- */
+    .modal-container {
+        width: 80%;
+    }
+
+    /* --- VOTE PAGE --- */
+    #vote-container {
+        gap: 1rem;
+    }
+
+    /* --- Account / login */
+    .form-container {
+        width: 80%;
+        height: 35vh;
+    }
+
+    /* .......... Footer .......... */
+    footer {
+        height: auto;
+        padding: 2rem 0 1.5rem 0;
+        flex-direction: column;
+        align-items: center;
+        flex-flow: column-reverse;
+
+        gap: 2rem;
+    }
+
+    .footer-policy,
+    .footer-social,
+    .footer-contact 
+    {
+        width: 50%;
+    }
+
+    .footer-policy  li {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+/* ::::::::::::::: REGULAR MOBILE DEVICES ::::::::::::::::::: */
+@media only screen and (max-width:480PX) {
+    body {
+        font-size: 14px !important;
+    }
+    /* .......... Header .......... */
+    header, .nav-link-list {
+        height: 10vh;
+    }
+    .flashes {
+        margin-top: 10vh;
+    }
+    .nav-page-link {
+        padding-top: calc((10vh - 1.2rem) / 2);
+        font-size: 1.2rem;
+        
+    }
+    .nav-user-link {
+        font-size: 1.15rem;
+        justify-content: center;
+    }
+    #nav-user-list > li {
+        padding-left: 0;
+    }
+
+    /* .......... Main ............ */
+    .page-intro {
+        font-size: 1.5rem;
+    }
+
+    .submit-color-container {
+        padding: 1rem;
+    }
+    .submit-color-container h5 {
+        font-size: 1.5rem;
+    }
+    /* --- Color Modal --- */
+    #color-info {
+        width: 80%;
+    }
+
+    /* VOTE PAGE */
+    #voted-color {
+        width: 22rem;
+    }
+    #btn-vote {
+        width: 8rem;
+    }
+
+    /* --- Account / login */
+
+    .form-inp {
+        width: 80% !important;
+    }
+    .access-btn {
+        width: 50%;
+    }
+
+
+
+    
+}
+
+
+/* ::::::::::::::: SMALL MOBILE DEVICES ::::::::::::::::::::: */
+@media only screen and (max-width: 370PX) {
+
+
+    /* .......... Header .......... */
+    .nav-link-list {
+        width:78%;
+    }
+    .nav-page-link {
+        padding-top: calc((10vh - 1rem) / 2);
+        font-size: 1rem;
+    }
+    .nav-user-link {
+        font-size: 0.9rem;
+        gap: 0.3rem;
+        
+    }
+    #nav-user-list {
+        width: 22%;
+    }
+
+    /* .......... Main ............ */
+    .submit-color-container {
+        padding: 0.5rem;
+    }
+    .submit-color-container h5 {
+        font-size: 1.2rem;
+    }
+    #color-list-submit {
+        width: 80%;
+    }
+    .color-name {
+        font-size: 1.8rem;
+    }
+    .color-hex {
+        font-size: 1rem;
+    }
+
+    /* --- Color Modal --- */
+    .color-values {
+        font-size: 1.2rem;
+    }
+
+    #voted-color {
+        width: 18rem;
+    }
+
+    /* --- Account / login */
+    .access-title {
+        font-size: 3rem;
+    }
+}
