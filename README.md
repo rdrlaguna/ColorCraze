@@ -12,8 +12,8 @@ This project was developed as the final assignment for **cs50x: Introduction to 
 ## Table of Contents
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
-- [Features](#features)
-- [Contributing](#contributing)
+- [Usage](#usage)
+- [Design Decisions](#design-decisions)
 - [Tests](#tests)
 - [License](#license)
 - [Authors and Acknowledgments](#authors-and-acknowledgments)
@@ -84,6 +84,7 @@ ColorCraze/
 ├── README.md           # Repository description
 └── requirements.txt
 ```
+---
 
 The project is structured into various files and folders, each with specific functionality that contributes to the overall application. Below is a breakdown of the files:
 
@@ -126,13 +127,50 @@ Contains all HTML templates used by Flask to render different pages. Here's an o
 This SQLite database file stores all the data related to users, colors, and votes. It is dynamically updated as users interact with the application (e.g., submitting colors, voting).
 
 
-## 3. Usage
+## Usage
 
 After installing, run the web app and submit your favorite colors! Navigate to the homepage and click the "Submit a Color" button to get started.
 
+- **Register:** Register and Log in to be able to use all the user reserved features.
 - **Submit a Color:** Fill out the form with your color's name and hex code.
 - **Vote for Colors:** View and vote for other submitted colors on the ranking page.
-  
+
+### Design Decisions
+
+---
+
+One of the most debated design decisions during the development process was how to handle color name validation. Initially, I allowed for more flexible naming (e.g., special characters and numbers), but after testing, it became apparent that simpler, more traditional names felt more natural for users. We opted for a rule-based validation approach that ensures names are purely alphabetical and have a defined character limit. This makes the app more user-friendly and keeps color names consistent across the platform.
+
+But the most challenging design decision in the development of **ColorCraze** was implementing the vote system. Initially, the goal was to create a simple upvoting mechanism where users could vote for their favorite colors. However, after considering how to keep the app engaging, I decided to introduce a layer of **gamification** by limiting the number of votes a user can cast and creating a system that encourages continuous participation through **vote recharges**. 
+
+#### **Vote Limitation and Recharge Mechanism**
+
+When a new user registers in the app, they start with three votes. These votes are cast on any color of their choosing within the list. Once the user has cast their three votes, they can no longer vote until they recharge their voting allowance. This recharge mechanism is tied to user engagement: *every time a user submits a new color to the list, they receive three additional votes to cast*. This means that to continue voting, users need to stay actively involved by contributing new colors to the community.
+
+The design of this vote system offers several key benefits:
+- **Encourages Engagement:** By tying voting to submitting new content, the system encourages users to stay actively involved with the platform. This helps ensure that the app remains dynamic and vibrant, with a steady influx of new colors being added regularly. Users are more motivated to contribute because participation has a direct benefit: more votes.
+- **Reduces Spam Voting:** A limited vote system prevents users from indiscriminately upvoting every color. Instead, users must think carefully about which colors truly resonate with them. This ensures that the most popular colors earn their votes based on genuine user appreciation rather than a flood of random votes.
+- **Promotes Ownership:** Users have a sense of ownership over their voting decisions. Knowing they only have a limited number of votes makes those votes feel more meaningful and impactful. When they submit a new color to gain more votes, it creates a deeper connection to the content within the app, as they’re not just passive users—they’re actively contributing to the community.
+- **Game-Like Incentives:** The vote recharge system introduces a subtle gaming element. It becomes a cycle: submit a new color, earn more votes, and then vote for other users' colors or promote your favorites. This cycle of earning and spending votes mirrors game mechanics often found in apps with point systems, rewarding users for participating in a variety of ways.
+
+#### **Why This System Was Chosen**
+
+When brainstorming ways to encourage engagement, I initially considered allowing users to vote endlessly, with no restrictions on the number of votes they could cast. However, I quickly realized that an unrestricted system would lead to a lack of thoughtful voting and would diminish the value of each individual vote. There was also a risk that, without limitations, some users could over-influence the ranking system by voting excessively for their own submissions or their favorite colors, regardless of quality or popularity.
+
+I considered implementing other systems, such as awarding a set number of daily votes to encourage users to return regularly. However, after reviewing several gamification techniques, I realized that encouraging user-generated content would be more beneficial for ColorCraze in the long run. By requiring users to submit new colors to recharge their voting allowance, the app ensures that users stay engaged both as voters and as contributors, keeping the color list fresh and ever-expanding.
+
+Another reason for choosing this system was to foster a sense of balance in user participation. Rather than allowing passive consumption, the vote-recharge mechanism encourages active contribution. This system adds an extra layer of interactivity by ensuring that users not only engage with the content but also contribute to its creation.
+
+#### **Technical Implementation**
+
+From a technical standpoint, implementing this system required some thoughtful design. Each user has an attribute in the database that stores their remaining votes. When a vote is cast, the application reduces this count by one. Once the count reaches zero, the user is prevented from casting further votes until they submit a new color, at which point their vote count is increased by three.
+
+I used Flask sessions to manage user login states and kept track of each user’s remaining votes via the database. The logic that governs whether a user can vote or not is checked before every vote is submitted to the database. This ensures that users cannot bypass the system and always have the correct number of votes based on their activity. Similarly, when a user submits a new color, the vote count is updated and reflected in real-time, ensuring a seamless experience.
+
+To ensure fairness and consistency, I also introduced server-side validation to check for any inconsistencies between the client and server when voting or submitting colors. This protects against malicious attempts to manipulate the voting system.
+
+The vote system not only adds an element of strategy and fun but also increases the longevity of user engagement within the app. By encouraging users to stay active and submit new colors, ColorCraze fosters a more vibrant and continually evolving community. I believe that this decision will enhance the overall user experience while helping to maintain the integrity of the app’s core features.
+
 
 ## Features
 
@@ -148,11 +186,4 @@ We’d love your help in making this project better! Please feel free to contrib
 - Creating pull requests with improvements or bug fixes.
 - Suggesting new features!
 
-## Tests
-
-Run the tests using:
-
-```bash
-pytest
-```
 
